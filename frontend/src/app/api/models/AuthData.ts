@@ -1,8 +1,9 @@
+import {Role} from "./enums.ts/Role";
+
 export interface AuthData{
-  id: number,
   email: string,
-
-
+  password: string,
+  role: Role,
 }
 // private Long id;
 // private String email;

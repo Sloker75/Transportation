@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MenuItem} from "primeng/api";
 
 @Component({
   selector: 'app-main-header',
@@ -7,7 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainHeaderComponent implements OnInit {
 
-  constructor() { }
+  userMenuItems: MenuItem[] = [
+    {
+      label: 'Login',
+      icon: 'fa-solid fa-right-to-bracket',
+      routerLink: '/login'
+    },
+    {
+      label: 'Admin panel',
+      icon: 'fa-solid fa-screwdriver-wrench',
+      routerLink: '/admin',
+    },
+    {
+      label: 'Logout',
+      icon: 'fa-solid fa-right-from-bracket'
+    }
+  ];
+
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
