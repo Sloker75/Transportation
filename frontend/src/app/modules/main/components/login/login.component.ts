@@ -4,6 +4,9 @@ import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {ButtonModule} from "primeng/button";
 import {InputTextModule} from "primeng/inputtext";
+import {AuthHttpService} from "../../../../api/services/auth-http.service";
+import {first} from "rxjs";
+import {SecurityService} from "../../../../services/security.service";
 
 @Component({
   selector: 'app-login',
@@ -17,15 +20,21 @@ export class LoginComponent implements OnInit {
     password: ''
   }
 
-  constructor() { }
+  constructor(private authHttpService: AuthHttpService,
+              private securityService: SecurityService) {
+    this.login();
+  }
 
   ngOnInit(): void {
   }
 
   login() {
-    console.log(this.authData.email)
-    console.log(this.authData.password)
-    return false;
+    this.authHttpService.login(this.authData)
+      .pipe(first())
+      .subscribe({
+        next: user => this.securityService.login(user),
+        error: error => console.log(error)
+      })
   }
 }
 

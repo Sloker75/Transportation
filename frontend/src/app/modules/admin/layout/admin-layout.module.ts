@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import {AdminLayoutComponent} from "./admin-layout.component";
 import {RouterModule} from "@angular/router";
 import { AdminHeaderComponent } from './admin-header/admin-header.component';
+import {AvatarModule} from "primeng/avatar";
+import {MenuModule} from "primeng/menu";
 
 
 
@@ -14,6 +16,8 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
   imports: [
     CommonModule,
     RouterModule,
+    AvatarModule,
+    MenuModule,
   ]
 })
 export class AdminLayoutModule { }

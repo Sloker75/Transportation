@@ -1,0 +1,6 @@
+export enum State{
+  CANCELED = 'CANCELED',
+  IN_ROAD = 'IN_ROAD',
+  CREATED = 'CREATED',
+  DELIVERED = 'DELIVERED'
+}

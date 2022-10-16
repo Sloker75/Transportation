@@ -18,6 +18,14 @@ export class UserHttpService {
     return this.http.get<Customer>(`${this.URL}/${id}`)
   }
 
+  create(customer: Customer){
+    return this.http.post<void>(this.URL, customer)
+  }
+
+  update(customer: Customer){
+    return this.http.put<void>(`${this.URL}/${customer.id}`, customer)
+  }
+
   delete(id: number){
     return this.http.delete<Customer>(`${this.URL}/${id}`)
   }

@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {API_URL} from "../../config/Constants";
 import {HttpClient} from "@angular/common/http";
 import {AuthData} from "../models/AuthData";
+import {SecurityUser} from "../models/SecurityUser";
 
 @Injectable({providedIn: "root"})
 export class AuthHttpService{
@@ -11,7 +12,7 @@ export class AuthHttpService{
   }
 
   login(authData: AuthData){
-    return this.http.post<any>(`${this.URL}/login`, authData)
+    return this.http.post<SecurityUser>(`${this.URL}/login`, authData)
   }
 
   logout(){

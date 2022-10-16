@@ -4,7 +4,7 @@ INSERT INTO customers(name, last_Name, phone_Number) VALUES ('Vital', 'Volovnik'
 INSERT INTO transporters(phone_Number, name) VALUES ('0971578945', 'SuperCompany');
 INSERT INTO transporters(phone_Number, name) VALUES ('0971571545', 'CompanySuper');
 
-INSERT INTO authorizations(email, password, role, customer_id) VALUES ('vladburilo@gmail.com', '$2a$10$1yRYL8okTK14GjvRrNCCbu1WNmPwUXCL9LCyOX7YtLKNwPxtrCpTm', 'USER', 1);
+INSERT INTO authorizations(email, password, role, customer_id) VALUES ('vladburilo@gmail.com', '$2a$10$1yRYL8okTK14GjvRrNCCbu1WNmPwUXCL9LCyOX7YtLKNwPxtrCpTm', 'ADMIN', 1);
 INSERT INTO authorizations(email, password, role, customer_id) VALUES ('vital@gmail.com', '$2a$10$1yRYL8okTK14GjvRrNCCbu1WNmPwUXCL9LCyOX7YtLKNwPxtrCpTm', 'USER', 2);
 
 
@@ -18,5 +18,5 @@ INSERT INTO deliveries(address_country, address_city, address_street, destinatio
 INSERT INTO cargoes(item_name, weight, unit, quantity, delivery_id) VALUES ('bike', 2, 'KILOGRAM', 2, 1);
 INSERT INTO cargoes(item_name, weight, unit, quantity, delivery_id) VALUES ('computer', 2, 'KILOGRAM', 2, 2);
 
-INSERT INTO offers(transportation_info, price, state,  transporter_id, delivery_id) values ('Information', 500, 'STATEMENT_CREATED', 1, 1);
-INSERT INTO offers(transportation_info, price, state, transporter_id, delivery_id) values ('Information', 900, 'STATEMENT_CREATED', 2, 2);
+INSERT INTO offers(transportation_info, price, state,  transporter_id, delivery_id) values ('Information', 500, 'CREATED', 1, 1);
+INSERT INTO offers(transportation_info, price, state, transporter_id, delivery_id) values ('Information', 900, 'CREATED', 2, 2);
