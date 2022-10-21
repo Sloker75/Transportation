@@ -8,6 +8,8 @@ import com.example.transportation_company.mapper.Mapper;
 import com.example.transportation_company.repository.CustomerRepository;
 import com.example.transportation_company.repository.DeliveryRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,8 +25,8 @@ public class DeliveryService {
         return mapper.toDeliveryDto(retrieve(id));
     }
 
-    public List<DeliveryDto> getAll(){
-        return deliveryRepository.findAll().stream().map(mapper::toDeliveryDto).toList();
+    public Page<DeliveryDto> getAll(Pageable pageable){
+        return deliveryRepository.findAll(pageable).map(mapper::toDeliveryDto);
     }
 
     public DeliveryDto create(DeliveryDto deliveryDto){

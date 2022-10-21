@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {SecurityUser} from "../api/models/SecurityUser";
 import {Role} from "../api/models/enums.ts/Role";
-import {BehaviorSubject, ReplaySubject} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 import {Router} from "@angular/router";
 
 @Injectable({providedIn: "root"})
@@ -18,7 +18,7 @@ export class SecurityService{
   login(user: SecurityUser){
     this.updateUserInLocalStorage(user)
     this._isAuthenticated$.next(true)
-    this.router.navigate(["/deliveries"])
+    this.router.navigate([this.hasRole(Role.ADMIN) ? "/admin" :"/deliveries"])
   }
 
   logout(){

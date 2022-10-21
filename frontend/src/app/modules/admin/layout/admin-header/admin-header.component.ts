@@ -2,8 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {AuthHttpService} from "../../../../api/services/auth-http.service";
 import {SecurityService} from "../../../../services/security.service";
-import {first, takeUntil} from "rxjs";
-import {Role} from "../../../../api/models/enums.ts/Role";
+import {first} from "rxjs";
 import {UntilDestroy, untilDestroyed} from "@ngneat/until-destroy";
 
 

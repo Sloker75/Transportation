@@ -1,4 +1,4 @@
-import {AuthData} from "./AuthData";
+import {SecurityUser} from "./SecurityUser";
 
 export interface Customer{
   id: number,
@@ -6,6 +6,6 @@ export interface Customer{
   lastName: string,
   phoneNumber: string,
 
-  authData: AuthData,
+  user: SecurityUser,
 
 }

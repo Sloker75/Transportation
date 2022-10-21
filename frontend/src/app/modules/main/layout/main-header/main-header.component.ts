@@ -56,6 +56,12 @@ export class MainHeaderComponent implements OnInit {
         visible: this.securityService.hasRole(Role.ADMIN)
       },
       {
+        label: 'User panel',
+        icon: 'fa-solid fa-screwdriver-wrench',
+        //routerLink: ['/user', this.securityService.getUser().id],
+        visible: this.securityService.hasRole(Role.USER || Role.TRANSPORTER)
+      },
+      {
         label: 'Logout',
         icon: 'fa-solid fa-right-from-bracket',
         command: () => this.logout(),

@@ -8,11 +8,15 @@ import {DataViewModule} from "primeng/dataview";
 import {RatingModule} from "primeng/rating";
 import {ButtonModule} from "primeng/button";
 import {DeliveryHttpService} from "../../../../api/services/delivery-http.service";
-import {first} from "rxjs";
 import {RouterModule} from "@angular/router";
-import {LoginComponent} from "../login/login.component";
 import {RestPage} from "../../../../api/models/RestPage";
 import {InputTextModule} from "primeng/inputtext";
+import {AuthHttpService} from "../../../../api/services/auth-http.service";
+import {SecurityService} from "../../../../services/security.service";
+import {untilDestroyed} from "@ngneat/until-destroy";
+import {Role} from "../../../../api/models/enums.ts/Role";
+import {Pagination} from "../../../../api/models/Pagination";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-deliveries',
@@ -22,6 +26,9 @@ import {InputTextModule} from "primeng/inputtext";
 export class DeliveriesComponent implements OnInit {
 
   deliveries: RestPage<Delivery> = new RestPage<Delivery>();
+  isCustomer: boolean = false;
+  isTransporter: boolean = false;
+
 
   sortOptions: SelectItem[] = [
     {label: 'Price High to Low', value: '!price'},
@@ -34,16 +41,28 @@ export class DeliveriesComponent implements OnInit {
 
   sortField: string = "id";
 
-  constructor(private deliveryHttpService: DeliveryHttpService) {
-    this.getDeliveries()
+  constructor(private deliveryHttpService: DeliveryHttpService,
+              private authHttpService: AuthHttpService,
+              private securityService: SecurityService) {
+    this.securityService.isAuthenticated$
+      .pipe(first())
+      .subscribe(isAuthenticated => {
+        this.isCustomer = this.securityService.hasRole(Role.USER);
+        this.isTransporter = this.securityService.hasRole(Role.TRANSPORTER);
+      })
+    this.loadData()
   }
 
   ngOnInit() {
 
   }
 
-  getDeliveries(){
-    this.deliveryHttpService.getAll()
+  onLazyLoad(event: any) {
+    this.loadData(Pagination.fromPrimeNg(event))
+  }
+
+  loadData(pagination: Pagination = new Pagination()){
+    this.deliveryHttpService.getAll(pagination)
       .pipe(first())
       .subscribe({
         next: deliveries => {
@@ -52,7 +71,6 @@ export class DeliveriesComponent implements OnInit {
         },
         error: error => console.error(error)
       })
-
   }
 
 

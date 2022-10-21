@@ -11,7 +11,7 @@ export class OfferHttpService {
   }
 
   getAll(){
-    return this.http.get<Offer>(this.URL)
+    return this.http.get<Offer[]>(this.URL)
   }
 
   get(id: number){

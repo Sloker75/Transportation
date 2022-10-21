@@ -22,7 +22,7 @@ import java.util.List;
 public class Delivery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    private Long Id;
+    private Long id;
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "country", column = @Column(name = "address_country")),

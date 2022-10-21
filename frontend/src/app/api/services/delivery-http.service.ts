@@ -1,8 +1,9 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {API_URL} from "../../config/Constants";
 import {Delivery} from "../models/Delivery";
 import {RestPage} from "../models/RestPage";
+import {Pagination} from "../models/Pagination";
 
 @Injectable({providedIn: 'root'})
 export class DeliveryHttpService {
@@ -11,8 +12,9 @@ export class DeliveryHttpService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(){
-    return this.http.get<RestPage<Delivery>>(this.URL)
+  getAll(pagination: Pagination){
+    const params = new HttpParams({fromObject: {...pagination}})
+    return this.http.get<RestPage<Delivery>>(this.URL, {params})
   }
 
   get(id: number){

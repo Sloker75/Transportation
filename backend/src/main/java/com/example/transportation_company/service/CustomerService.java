@@ -6,6 +6,10 @@ import com.example.transportation_company.exception.EntityNotFoundException;
 import com.example.transportation_company.mapper.Mapper;
 import com.example.transportation_company.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,8 +24,8 @@ public class CustomerService {
         return mapper.toCustomerDto(retrieve(id));
     }
 
-    public List<CustomerDto> getAll(){
-        return customerRepository.findAll().stream().map(mapper::toCustomerDto).toList();
+    public Page<CustomerDto> getAll(Pageable pageable){
+        return customerRepository.findAll(pageable).map(mapper::toCustomerDto);
     }
 
     public CustomerDto create(CustomerDto customerDto){

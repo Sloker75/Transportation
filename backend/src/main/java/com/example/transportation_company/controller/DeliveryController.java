@@ -1,11 +1,12 @@
 package com.example.transportation_company.controller;
 
 import com.example.transportation_company.dto.DeliveryDto;
-import com.example.transportation_company.entity.Delivery;
-import com.example.transportation_company.entity.Offer;
 import com.example.transportation_company.service.DeliveryService;
-import com.example.transportation_company.service.OfferService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,8 +18,8 @@ public class DeliveryController {
     private final DeliveryService deliveryService;
 
     @GetMapping
-    public List<DeliveryDto> getAll(){
-        return deliveryService.getAll();
+    public Page<DeliveryDto> getAll(@PageableDefault(sort = "id", direction = Sort.Direction.ASC) Pageable pageable){
+        return deliveryService.getAll(pageable);
     }
 
     @GetMapping("/{id}")

@@ -5,7 +5,7 @@ INSERT INTO transporters(phone_Number, name) VALUES ('0971578945', 'SuperCompany
 INSERT INTO transporters(phone_Number, name) VALUES ('0971571545', 'CompanySuper');
 
 INSERT INTO authorizations(email, password, role, customer_id) VALUES ('vladburilo@gmail.com', '$2a$10$1yRYL8okTK14GjvRrNCCbu1WNmPwUXCL9LCyOX7YtLKNwPxtrCpTm', 'ADMIN', 1);
-INSERT INTO authorizations(email, password, role, customer_id) VALUES ('vital@gmail.com', '$2a$10$1yRYL8okTK14GjvRrNCCbu1WNmPwUXCL9LCyOX7YtLKNwPxtrCpTm', 'USER', 2);
+INSERT INTO authorizations(email, password, role, customer_id) VALUES ('vital@gmail.com', '$2a$10$1yRYL8okTK14GjvRrNCCbu1WNmPwUXCL9LCyOX7YtLKNwPxtrCpTm', 'TRANSPORTER', 2);
 
 
 INSERT INTO authorizations(email, password, role, transporter_id) VALUES ('company@gmail.com', '$2a$10$1yRYL8okTK14GjvRrNCCbu1WNmPwUXCL9LCyOX7YtLKNwPxtrCpTm', 'TRANSPORTER', 1);

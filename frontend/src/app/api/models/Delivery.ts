@@ -1,6 +1,7 @@
 import {Customer} from "./Customer";
 import {State} from "./enums.ts/State";
 import {Address} from "./Address";
+import {Cargo} from "./Cargo";
 
 export interface Delivery{
   id: number,
@@ -12,6 +13,7 @@ export interface Delivery{
   departureDate: string,
   arrivalDate: string,
 
-  customer: Customer
+  customer: Customer,
+  cargo: Cargo[]
 
 }
